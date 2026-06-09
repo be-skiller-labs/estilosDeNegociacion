@@ -862,14 +862,22 @@
             .matrix-cell .mc-title { font-size: 12px; letter-spacing: 0; }
             .matrix-cell .mc-code { font-size: 11px; padding: 2px 8px; }
         }
-    </style>
+            .matrix-cell.mc-on { border-color:#FF6B1A; box-shadow:0 0 0 3px #FF6B1A, 0 10px 30px rgba(255,107,26,0.6); transform:translateY(-3px); }
+        .matrix-compromiso.mc-on { box-shadow:0 0 0 3px #fff, 0 10px 36px rgba(255,107,26,0.85); }
+        .matrix-grid.scored .matrix-cell:not(.mc-on), .matrix-grid.scored .matrix-compromiso:not(.mc-on) { opacity:0.45; }
+        .mc-pts { margin-top:6px; font-size:14px; font-weight:800; color:#FF8C42; }
+        .matrix-compromiso .mc-pts { color:#fff; }
+        .matrix-you { position:absolute; z-index:20; transform:translate(-50%,-50%); display:flex; flex-direction:column; align-items:center; gap:5px; pointer-events:none; transition:left .6s ease, top .6s ease; }
+        .matrix-you .dot { width:18px; height:18px; border-radius:50%; background:#fff; border:3px solid #FF6B1A; box-shadow:0 0 0 5px rgba(255,107,26,0.3), 0 0 18px rgba(255,107,26,0.9); }
+        .matrix-you .lbl { font-size:11px; font-weight:800; letter-spacing:1px; color:#fff; background:#FF6B1A; padding:2px 9px; border-radius:999px; white-space:nowrap; box-shadow:0 2px 8px rgba(0,0,0,0.4); }
+</style>
 </head>
 <body>
     <!-- Modal de selección de idioma -->
     <div id="langModal" class="lang-modal-overlay">
         <div class="lang-modal">
             <div class="logo">
-                <img src="https://be-skiller.com/wp-content/uploads/BS-LOGO-H02-HORIZONTAL-GRADIENT-Color-Dark-1.png" alt="Be-Skiller" class="logo-img">
+                <img src="BS LOGO H02 HORIZONTAL GRADIENT Color Dark.png" alt="Be-Skiller" class="logo-img">
             </div>
             <p class="lang-modal-title">Selecciona tu idioma</p>
             <p class="lang-modal-subtitle">Select your language</p>
@@ -892,7 +900,7 @@
     <div id="welcomeScreen" class="screen active welcome-screen">
         <div class="welcome-card">
             <div class="logo">
-                <img src="https://be-skiller.com/wp-content/uploads/BS-LOGO-H02-HORIZONTAL-GRADIENT-Color-Dark-1.png" alt="Be-Skiller" class="logo-img">
+                <img src="BS LOGO H02 HORIZONTAL GRADIENT Color Dark.png" alt="Be-Skiller" class="logo-img">
             </div>
             <h1 id="welcomeTitle">Cuestionario de Thomas Kilmann para Estilos de Negociación</h1>
             <p class="subtitle" id="welcomeSubtitle">Descubre tu estilo predominante respondiendo a 30 preguntas sobre cómo manejas situaciones de conflicto.</p>
@@ -927,4 +935,489 @@
     <div id="quizScreen" class="screen quiz-screen">
         <div class="container">
             <div class="logo-small logo">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWxuczppbmtzY2FwZT0iaHR0cDovL3d3dy5pbmtzY2FwZS5vcmcvbmFtZXNwYWNlcy9pbmtzY2FwZSIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iMTY4LjIyNCIgaGVpZ2h0PSI2NS4xMjAyIiB2aWV3Qm94PSIwIDAgMTY4LjIyNCA2NS4xMjAyIj4KPGRlZnM+CjxjbGlwUGF0aCBpZD0iY2xpcF8xIj4KPHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsLTEsMCw2NS4xMjAyKSIgZD0iTTAgNjUuMTJIMTY4LjIyNFYwSDBaIi8+CjwvY2xpcFBhdGg+CjxjbGlwUGF0aCBpZD0iY2xpcF8yIj4KPHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsLTEsMCw2NS4xMjAyKSIgZD0iTTEwLjg1NCA1NC4yNjZWMTguNTEzTDMwLjU0OCAzOC4yMDdDMzYuNDUyIDQ0LjExMSAzMi4yOTMgNTQuMjY2IDIzLjkzNyA1NC4yNjZaIi8+CjwvY2xpcFBhdGg+CjxnIGlkPSJtYXNrXzNfY29udGVudHMiPgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ3aGl0ZSIvPgo8Zz4KPGNsaXBQYXRoIGlkPSJjbGlwXzQiPgo8cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSwwLDY1LjEyMDIpIiBkPSJNLTMyNzY4LTMyNzY4SDMyNzY3VjMyNzY3SC0zMjc2OFoiLz4KPC9jbGlwUGF0aD4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXBfNCkiPgo8aW1hZ2UgeD0iMTAiIHk9IjEwIiB3aWR0aD0iMjciIGhlaWdodD0iMzciIHhsaW5rOmhyZWY9ImRhdGE6aW1hZ2UvcG5nO2Jhc2U2NCwKaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQUJzQUFBQWxDQVlBQUFDenBKS0lBQUFBQ1hCSVdYTUFBQTdFQUFBTwp4QUdWS3c0YkFBQUNra2xFUVZSNG5OM1hXWk1aWVJRRzRQbm5idVNDaTZGcVNFMlRzaFF0dHRnR1RUZXhqWDJKCmJTd1pwRFJWdUNCVjA3a1lWMitHRm9XUWliSE1KUDBIVHZYN2ZOODU1N3NRQ0FRUUNvVVFpVVc0bEZ4Q0pwT0IKVUJCUXFWWFE2L1V3bVUydzIrM3dlRHlnR1JyaGNCaUpSQUxaWEJhbFVnbTFlZzJ0ZGdzc3kySXdIR0E4R1lQagpPRHhPSDdINVhjeUx2Uk5DTEJaRElwVkFMcGREb1ZSQW85R0FOSkN3V0N4d09CM3dlcjFnQWd3aWtRZ1N5UVJ5CnVSeks1VExxalRyYTdUYllIb3ZoY1BqM3hhUlNLZVR2NVZCK1VFS3IxY0x3MFFDcjFRcW55d21Lb2hBSUJoQ04KUnBGTUpaSFA1MUd1bE5Gb05ORHV0TkhyOVRBY0RUR1pUTUQ5NERDZFRuY1VtOFVvNG1POGtsM2htcmlHU3FXQwpUcWVEMFdpRXpXYkRqZnNHZnRxUFVDaUVlRHlPVERhRFlxbUlXdTBweGxZTFhiYkx4emgrN3M4V1poS0paR21tClZxdmZrRm4rRkdhZnJIQzVYS0I0RklMQjRQSE5DSUxnemZSUFpxWlRtc2xYekVnOXpHWXo3STdkWnZWNi9UUm0KZ1VBQWtXZ0V5V1R5VEdheEtGS3BGUEtGUTh4VzJ4WEJ0NnVabWNsa09xMlpRcUdBV3ZOS1prNm5FMTdxakdZKwpuKzgzczBxbGdrYnpVTE9ORVdPejIrQjJ1K0gzODJhMzhWdmVyTWliM2JmdWViTUJiL2JBUGV4dlJwSWt6SllOCnM0aUp6QXdHQXl6VzF6TDdIRVFzRmtNcXZXN1c2WFRRNis5cDlxY1JNemVqejJEbWNEamc4WHJBTU15L2JxYmMKMFJ0WHpBcUZBaXJWZGJQUmFIU0FHYmxpNW5HRHB1bi93VXk3M2V6d3RXQlBzM1E2dlRSck5wc0htTzFZQzVabQo0Y1U0eTV6YnJMeHV0dGZSZjlic0tPdjNTOHkrRkZDdFZubXpieXRtMy9jMG04ZTRZNVZibWkzdTJWM3Riayt6CkZ6NlpqbUkyaTNIVGJOdVRhVDVpem1yMmxUZnI5L3NIbVAwNitsdFd1WGdpam13MnUyN1dmV05tUHdINWtldTIKeDdqYmFnQUFBQUJKUlU1RXJrSmdnZz09Ii8+CjwvZz4KPC9nPgo8L2c+CjxtYXNrIGlkPSJtYXNrXzMiIG1hc2stdHlwZT0ibHVtaW5hbmNlIj4KPHVzZSB4bGluazpocmVmPSIjbWFza18zX2NvbnRlbnRzIi8+CjwvbWFzaz4KPGNsaXBQYXRoIGlkPSJjbGlwXzUiPgo8cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSwwLDY1LjEyMDIpIiBkPSJNNDUuNzY2IDM0LjMyNEM0MC4zMTUgMjguODc0IDQwLjMxNSAyMC4wMzYgNDUuNzY2IDE0LjU4NSA1MS4yMTYgOS4xMzQgNjAuMDU0IDkuMTMzIDY1LjUwNiAxNC41ODVMNDYuOCAzNS4yNkM0Ni40NDQgMzQuOTY5IDQ2LjA5OCAzNC42NTcgNDUuNzY2IDM0LjMyNCIvPgo8L2NsaXBQYXRoPgo8ZyBpZD0ibWFza182X2NvbnRlbnRzIj4KPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0id2hpdGUiLz4KPGc+CjxjbGlwUGF0aCBpZD0iY2xpcF83Ij4KPHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsLTEsMCw2NS4xMjAyKSIgZD0iTS0zMjc2OC0zMjc2OEgzMjc2N1YzMjc2N0gtMzI3NjhaIi8+CjwvY2xpcFBhdGg+CjxnIGNsaXAtcGF0aD0idXJsKCNjbGlwXzcpIj4KPGltYWdlIHg9IjQwIiB5PSIyOSIgd2lkdGg9IjI2IiBoZWlnaHQ9IjI3IiB4bGluazpocmVmPSJkYXRhOmltYWdlL3BuZztiYXNlNjQsCmlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFCb0FBQUFiQ0FZQUFBQmlGcDlyQUFBQUNYQklXWE1BQUE3RUFBQU8KeEFHVkt3NGJBQUFDeGtsRVFWUjRuTDNXU1U4aVVRQUVZUCs1QnpuSUpFSWlHSUVvcUlBQ2p1eExzelhJSW5zagoyN0NNZ0dHSlFDSWM0Q0NuR3ZCcFF3OHdJcERwcE0rVi9sNm42dTN0Nys5ait2SjRQUEQ1ZkFpRUFvakVJa2lrCkVzamxjaWlWU21pMEd0enA3MkN4V0VBNUtkQTBqV0F3aUdnc0NvWmhrTXZuVUNxWFVLdlYwR3cxMGUxMjBlLzMKTVJ3Tk1SNlBNWDMyT0VFLytCQUtoUkNmaUNHVHlhQlFLS0JTcTZEVDZXQXdHbUMxV2VGeXVlRHorUkFLaHhDTAp4NUJPcDVIUDUxR3VsRkdyMTlCcXRValFZRVhRQWU4QWgveERIQW1PY0N3NnhxbmtGR2ZuWjdpOHVzVDF6VFZ1CmY5N0NaRExCN3JERDQvSGdQbkNQU0NTQ1pDcUpiRGFMWXFtSWFyVktyTkJUcWVEMS80cmhzTWgzc1p2Uzc1bwpGWjJHMEprdFpsQVVCUy90WmVsU1RBcTVISmV1MCsyc1NTY1dReXFUc25SYW5SWUdBNkZ6dXB5RUxrVG9tRFN6CmV6cWp5UWk3ZlZkMGdobmR1Zng4Um5jM1IrZjFJaEFNSUJybDBsVnJWVFNiYTlKTnoraVRUcTZRUTZVaWRIcUQKSGxZcm9hTjk5Q0pkZVUyNnBiLzNoUUpxdFJxNld4Mk1SaU5zZGh2Y2JqZjhmai9DRDJIRU0zR2tIOW1vRkFxbwpWQ3FvMSt0b3RTZEJQUkkwR28xV0JIMUZaemJEUVRsWXVrZzBnbFFxaFd3dWkxSnBGM1RhT1Rvbm9RdUdnb2pGCkNOMjBHVDdwMkdiWWxzN2xkaEc2OEl3dVg4aHZUM2VsdkZxZzgzZzlDQVIyUlNjbGRFcVZrcVd6V0MyRWpwNmoKWStib05pN1ZDMjZwMm14LzBjV1gwTFYyUmVjZ2ROczF3Ny9vOUlSdTZSNXRYS29uM0ZKOXBqUE03WkhmTjZOTApFN3BwcVg2ZlRzU2x1OUhjY09rK1N2VWg4b0JrTW9sTU5vTmljY005ZXFlVEU3cnBsTC9UZlV3NXUwZlJKWHUwCjd1Kzk5aDVOcHZ5LzBpV1NDV1F5aE82cCtvUkdvNEdYenN2dTZOZzkyZlFaRnVoVWMzVFd4U24vOWkzbzI2VTYKMmFORUlvSEh6Q01LdnlaOTlMdUM1K2RudE50dDlIbzlEQWFETDg1b0JSMTdnYVNXMEczVkRPdE1lV3o5S2Y4RAoic2puRUlTUGtZWHdBQUFBQVNVVk9SSzVDWUlJPSIvPgo8L2c+CjwvZz4KPC9nPgo8bWFzayBpZD0ibWFza182IiBtYXNrLXR5cGU9Imx1bWluYW5jZSI+Cjx1c2UgeGxpbms6aHJlZj0iI21hc2tfNl9jb250ZW50cyIvPgo8L21hc2s+CjwvZGVmcz4KPGc+CjxnIGlua3NjYXBlOmdyb3VwbW9kZT0ibGF5ZXIiIGlua3NjYXBlOmxhYmVsPSJMaXZlbGxvIDEiPgo8cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSwwLDY1LjEyMDIpIiBkPSJNMCAwSDE2OC4yMjNWNjUuMTJIMFoiIGZpbGw9IiMyMzFmMjAiLz4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXBfMSkiPgo8cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSwyNS43OTY4LDI3LjEzMzgpIiBkPSJNMCAwSC0xNC45NDJWLTI3LjEzMkgwQzcuNDkyLTI3LjEzMiAxMy41NjYtMjEuMDU5IDEzLjU2Ni0xMy41NjYgMTMuNTY2LTYuMDc0IDcuNDkyIDAgMCAwTTAtMy4xODhDNS43MjItMy4xODggMTAuMzc4LTcuODQ0IDEwLjM3OC0xMy41NjYgMTAuMzc4LTE5LjI4OSA1LjcyMi0yMy45NDQgMC0yMy45NDRILTExLjc1NFYtMy4xODhIMCIgZmlsbD0iI2ZmZmZmZiIvPgo8cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSw1NS42MzU2LDI2LjcwNzUpIiBkPSJNMCAwQy03LjcwOSAwLTEzLjk1OC02LjI1LTEzLjk1OC0xMy45NTgtMTMuOTU4LTE0LjQyOC0xMy45MzQtMTQuODkzLTEzLjg4OS0xNS4zNTJIMTMuODg4QzEzLjkzNC0xNC44OTMgMTMuOTU4LTE0LjQyOCAxMy45NTgtMTMuOTU4IDEzLjk1OC02LjI1IDcuNzA4IDAgMCAwTTAtMy4xODhDNS4zMjctMy4xODggOS43NjMtNy4wNzYgMTAuNjItMTIuMTYzSC0xMC42MjFDLTkuNzY0LTcuMDc2LTUuMzI3LTMuMTg4IDAtMy4xODgiIGZpbGw9IiNmZmZmZmYiLz4KPHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsLTEsMTA2LjExMjcsMjEuOTc5KSIgZD0iTTAgMEMuNTc4IDEuOTU1IDIuMDY1IDMuMDI5IDQuMjQxIDMuMDI5IDYuNDk5IDMuMDI5IDcuOTg2IDEuOTU1IDguNDU0IDBaTTQuMTg2IDYuMzg4Qy0uMzAzIDYuMzg4LTMuODU0IDIuODM2LTMuODU0LTEuNjUyLTMuODU0LTYuMTEzLS4yNDgtOS41ODMgNC40MDYtOS41ODMgNy40OS05LjU4MyAxMC42NTctNy44NDggMTEuNjc2LTQuNzA5SDcuNjgzQzYuNzQ3LTUuODExIDUuODM4LTYuMjI0IDQuMzIzLTYuMjI0IDIuMTQ4LTYuMjI0IC41NTEtNS4wNjcgLjExLTMuMjIySDExLjkyNEMxMi4wMzQtMi42OTkgMTIuMDYyLTIuMzY4IDEyLjA2Mi0xLjgxNyAxMi4wNjIgMi45MTkgOC43MjkgNi4zODggNC4xODYgNi4zODgiIGZpbGw9IiNmZmZmZmYiLz4KPHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsLTEsMCw2NS4xMjAyKSIgZD0iTTEyMC4yOTcgMzkuOTE5SDEzMC40NDNWNDMuMTQxSDEyMC4yOTdaIiBmaWxsPSIjZmZmZmZmIi8+CjxwYXRoIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLC0xLDkyLjQxNzQsNDIuMDE1NjA0KSIgZD0iTTAgMEMtMS45MjcgLjcxNi0xLjk4MSAuNzQzLTIuMjU3IC45MDgtMyAxLjM3Ni0zLjM4NiAyLjAwOS0zLjM4NiAyLjc1My0zLjM4NiAzLjk2NC0yLjUzMiA0LjgxNy0xLjI5MyA0LjgxNy0uMDI3IDQuODE3IC43NDMgNC4wNDcgLjg1NCAyLjY3SDQuNzYzQzQuNTcgNi4yNDkgMi4wMSA4LjQ1MS0xLjI2NiA4LjQ1MS00LjU0MiA4LjQ1MS03LjE4NSA1Ljg5MS03LjE4NSAyLjY3LTcuMTg1IC4xMS01LjY3MS0xLjg0NC0yLjk0NS0yLjg2My0uMjQ3LTMuODgyLS4wMjctMy45NjQgLjU3OC00LjQzMiAxLjE4NS00LjkgMS41MTUtNS42NzEgMS41MTUtNi40OTcgMS41MTUtNy45NTYgLjM4Ni04Ljk3NC0xLjIzOC04Ljk3NC0yLjkxOC04Ljk3NC0zLjgyNi04LjE0OC0zLjk5MS02LjQ0MkgtNy45MjhDLTcuNTk3LTEwLjI5Ni00LjgxNy0xMi42MDgtMS4yMzgtMTIuNjA4IDIuNDIzLTEyLjYwOCA1LjI1OS05Ljc3MyA1LjI1OS02LjA4NCA1LjI1OS0zLjMzMSA0LjEzLTEuNTQyIDAgMCIgZmlsbD0iI2ZmZmZmZiIvPgo8cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSwxMTEuODQ5LDM5LjAxNTEpIiBkPSJNMCAwSC00LjA1NEwtOC4yNzctNi4yMjlWNS4wOTNILTEyLjA1MlYtMTUuMjVILTguMjc3Vi04Ljk1N0wtMy4zOTgtMTUuMjVILjg4MUwtNS4xMjctNy40NloiIGZpbGw9IiNmZmZmZmYiLz4KPHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsLTEsMCw2NS4xMjAyKSIgZD0iTTExMy45MjUgMjcuOTc1SDExNy42OTVWMzEuMTk4SDExMy45MjVaIiBmaWxsPSIjZmZmZmZmIi8+CjxwYXRoIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLC0xLDAsNjUuMTIwMikiIGQ9Ik0xMTMuODk3IDEwLjg1NUgxMTcuNjY4VjI2LjEwNUgxMTMuODk3WiIgZmlsbD0iI2ZmZmZmZiIvPgo8cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSw5My4yMzQ3LDI3LjU5NjcwMykiIGQ9Ik0wIDBILTMuOTlWNS4yMDVILS4wODJDMi41MzMgNS4yMDUgMy43NzIgNC4zNTEgMy43NzIgMi41MzMgMy43NzIgLjc3MSAyLjY0NCAwIDAgME0tMy45OSAxMy4wNTJILS4zM0MxLjYyNSAxMy4wNTIgMi41ODkgMTIuMzkxIDIuNTg5IDEwLjk4NyAyLjU4OSA5LjUyNyAxLjYyNSA4Ljg5NC0uNjYxIDguODk0SC0zLjk5Wk00LjEwNCA3LjQ5QzUuNzI4IDguMzQzIDYuMzYgOS40MTcgNi4zNiAxMS4zMTcgNi4zNiAxMy4yMTggNS41MDggMTQuODE0IDQuMDQ4IDE1Ljc1MSAyLjgzNiAxNi41MjIgMS41NjkgMTYuNzQyLTEuNDU5IDE2Ljc0MkgtNy43NjNWLTMuNjA3SC0uMjIxQzUuMDEyLTMuNjA3IDcuNTcyLTEuMjY3IDcuNTcyIDIuNDUxIDcuNTcyIDQuODc0IDYuNjkxIDYuNDE2IDQuMTA0IDcuNDkiIGZpbGw9IiNmZmZmZmYiLz4KPHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsLTEsMCw2NS4xMjAyKSIgZD0iTTEyMC4yOTcgMTAuODU1SDEyNC4wNjlWMzEuMTk4SDEyMC4yOTdaIiBmaWxsPSIjZmZmZmZmIi8+CjxwYXRoIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLC0xLDAsNjUuMTIwMikiIGQ9Ik0xMjYuNjcxIDEwLjg1NUgxMzAuNDQzVjMxLjE5OEgxMjYuNjcxWiIgZmlsbD0iI2ZmZmZmZiIvPgo8cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSwxMzUuODQ2MSw0NS4wNDQpIiBkPSJNMCAwQy41NzggMS45NTUgMi4wNjQgMy4wMjggNC4yMzkgMy4wMjggNi40OTcgMy4wMjggNy45ODMgMS45NTUgOC40NTEgMFpNNC4xODUgNi4zODdDLS4zMDMgNi4zODctMy44NTQgMi44MzUtMy44NTQtMS42NTEtMy44NTQtNi4xMTEtLjI0Ny05LjU4IDQuNDA1LTkuNTggNy40ODgtOS41OCAxMC42NTQtNy44NDYgMTEuNjczLTQuNzA3SDcuNjgxQzYuNzQ1LTUuODA4IDUuODM3LTYuMjIxIDQuMzIyLTYuMjIxIDIuMTQ3LTYuMjIxIC41NTEtNS4wNjUgLjExLTMuMjIxSDExLjkyQzEyLjAzLTIuNjk4IDEyLjA1OC0yLjM2NyAxMi4wNTgtMS44MTYgMTIuMDU4IDIuOTE4IDguNzI3IDYuMzg3IDQuMTg1IDYuMzg3IiBmaWxsPSIjZmZmZmZmIi8+CjxwYXRoIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLC0xLDE1Ni44MDQxLDM4LjcwNykiIGQ9Ik0wIDBILS4yNzVDLTEuODQ1IDAtMi42MTUtLjM5MS0zLjU3OS0xLjc5NVYtLjMwOEgtNy4zNTJWLTE1LjU1OUgtMy4yNzZWLTcuMDhDLTMuMjc2LTQuNzEzLTIuMjAyLTMuNTI5IDAtMy40NzRILjU2MlYwWiIgZmlsbD0iI2ZmZmZmZiIvPgo8L2c+CjxnIGNsaXAtcGF0aD0idXJsKCNjbGlwXzIpIj4KPGcgbWFzaz0idXJsKCNtYXNrXzMpIj4KPGltYWdlIHg9IjEwIiB5PSIxMCIgd2lkdGg9IjI3IiBoZWlnaHQ9IjM3IiB4bGluazpocmVmPSJkYXRhOmltYWdlL3BuZztiYXNlNjQsCmlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFCc0FBQUFsQ0FZQUFBQ3pwSktJQUFBQUNYQklXWE1BQUE3RUFBQU8KeEFHVkt3NGJBQUFBTEVsRVFWUjRuTzNOb1FFQUFBUUFNT2U0MWNFcVB3alN3dktpSytkTHlHUXltVXdtazhsawpNcGxNSmp0WjREWmFTSy9XdCt3QUFBQUFTVVZPUks1Q1lJST0iLz4KPC9nPgo8L2c+CjxnIGNsaXAtcGF0aD0idXJsKCNjbGlwXzUpIj4KPGcgbWFzaz0idXJsKCNtYX
+                <img src="BS LOGO H02 HORIZONTAL GRADIENT Color Dark.png" alt="Be-Skiller" class="logo-img">
+            </div>
+
+            <div class="progress-info">
+                <span id="currentNum">Pregunta 1 de 30</span>
+                <span id="answeredCount">Respondidas: 0/30</span>
+            </div>
+            <div class="progress-bar">
+                <div id="progressFill" class="progress-fill" style="width: 3.33%"></div>
+            </div>
+
+            <div class="question-card">
+                <h2 class="question-title" id="questionPrompt">Elige la opción que mejor te describa:</h2>
+                <div id="optionsContainer"></div>
+            </div>
+
+            <div class="navigation">
+                <button class="btn-nav" id="prevBtn" onclick="prevQuestion()">
+                    ← Anterior
+                </button>
+                <button class="btn-nav btn-finish" id="finishBtn" onclick="showResults()" style="display: none;">
+                    Ver Resultados
+                </button>
+                <button class="btn-nav" id="nextBtn" onclick="nextQuestion()">
+                    Siguiente →
+                </button>
+            </div>
+
+            <div class="quick-nav">
+                <div class="quick-nav-title" id="quickNavTitle">Navegación rápida:</div>
+                <div class="quick-nav-grid" id="quickNavGrid"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pantalla de resultados -->
+    <div id="resultsScreen" class="screen results-screen">
+        <div class="container">
+            <div class="results-card">
+                <div class="results-header">
+                    <div class="logo">
+                        <img src="BS LOGO H02 HORIZONTAL GRADIENT Color Dark.png" alt="Be-Skiller" class="logo-img">
+                    </div>
+                    <h1 id="resultsTitle">Resultados del Cuestionario</h1>
+                    <p class="subtitle" id="resultsSubtitle">Tu perfil como negociador</p>
+                </div>
+
+                <h2 class="top-styles-title" id="topStylesTitle">Tus Estilos Predominantes</h2>
+                <div class="top-styles-grid" id="topStylesGrid"></div>
+                </div>
+
+                <!-- Matriz de estilos -->
+                <div class="matrix-section">
+                    <div style="text-align:center; margin-bottom: 24px;">
+                        <span class="matrix-eyebrow">Be-Skiller · Negociación</span>
+                        <h2 class="matrix-title">Matriz de Estilos de Negociación</h2>
+                        <p class="matrix-subtitle">Cinco estilos según el equilibrio entre el interés propio (YO) y el interés del otro (TÚ).</p>
+                    </div>
+
+                    <div class="matrix-wrapper">
+                        <div class="matrix-axis matrix-axis-y"></div>
+                        <div class="matrix-axis matrix-axis-x"></div>
+                        <div class="matrix-arrow matrix-arrow-up"></div>
+                        <div class="matrix-arrow matrix-arrow-right"></div>
+                        <span class="matrix-label matrix-label-tu">TÚ</span>
+                        <span class="matrix-label matrix-label-yo">YO</span>
+                        <span class="matrix-label-interes-otro">Interés otro</span>
+                        <span class="matrix-label-interes-propio">Interés propio</span>
+
+                        <div class="matrix-grid" id="matrixGrid">
+                            <div class="matrix-you" id="matrixYou" style="display:none"><span class="dot"></span><span class="lbl">T&Uacute;</span></div>
+                            <div class="matrix-cell mc-acomodacion">
+                                <div class="mc-title">Acomodación</div>
+                                <div class="mc-code">E5</div><div class="mc-pts"></div>
+                            </div>
+                            <div class="matrix-cell mc-asociacion">
+                                <div class="mc-title">Asociación</div>
+                                <div class="mc-code">E2</div><div class="mc-pts"></div>
+                            </div>
+                            <div class="matrix-cell mc-evitacion">
+                                <div class="mc-title">Evitación</div>
+                                <div class="mc-code">E4</div><div class="mc-pts"></div>
+                            </div>
+                            <div class="matrix-cell mc-competicion">
+                                <div class="mc-title">Competición</div>
+                                <div class="mc-code">E1</div><div class="mc-pts"></div>
+                            </div>
+                            <div class="matrix-compromiso">
+                                <div class="mc-title">Compromiso</div>
+                                <div class="mc-code">E3</div><div class="mc-pts"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="matrix-legend">
+                        <span class="chip"><strong>E1</strong>Competición</span>
+                        <span class="chip"><strong>E2</strong>Asociación</span>
+                        <span class="chip"><strong>E3</strong>Compromiso</span>
+                        <span class="chip"><strong>E4</strong>Evitación</span>
+                        <span class="chip"><strong>E5</strong>Acomodación</span>
+                    </div>
+                </div>
+
+                <div class="restart-container">
+                    <button class="btn-primary" id="restartBtn" onclick="restart()">
+                        🔄 Realizar Nuevo Cuestionario
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ── Idioma activo ──────────────────────────────────────────────
+        let currentLang = 'es';
+
+        // ── Traducciones de la UI ──────────────────────────────────────
+        const ui = {
+            es: {
+                pageTitle: 'Cuestionario de Thomas Kilmann para Estilos de Negociación - Be-Skiller',
+                welcomeTitle: 'Cuestionario de Thomas Kilmann para Estilos de Negociación',
+                welcomeSubtitle: 'Descubre tu estilo predominante respondiendo a 30 preguntas sobre cómo manejas situaciones de conflicto.',
+                howTitle: '¿Cómo funciona?',
+                howItems: ['Lee cada par de afirmaciones', 'Elige la opción que mejor te describa', 'Puedes navegar entre preguntas libremente', 'Al final conocerás tu perfil de estilos de negociación'],
+                disclaimerTitle: 'Antes de comenzar',
+                disclaimerItems: ['Esta herramienta es de uso exclusivamente formativo.', 'No se recogen ni almacenan datos personales.', 'Los resultados son orientativos y no constituyen una evaluación profesional.'],
+                disclaimerAccept: 'Al pulsar "Comenzar" aceptas estas condiciones.',
+                kilmannNote: 'Basado en el modelo de <strong>Thomas Kilmann</strong>, referente mundial en estilos de negociación y gestión de conflictos.',
+                startBtn: 'Comenzar Cuestionario',
+                questionOf: (n) => `Pregunta ${n} de 30`,
+                answered: (n) => `Respondidas: ${n}/30`,
+                questionPrompt: 'Elige la opción que mejor te describa:',
+                prevBtn: '← Anterior',
+                nextBtn: 'Siguiente →',
+                finishBtn: 'Ver Resultados',
+                quickNavTitle: 'Navegación rápida:',
+                resultsTitle: 'Resultados del Cuestionario',
+                resultsSubtitle: 'Tu perfil de estilos de negociación',
+                topStylesTitle: 'Tus Estilos Predominantes',
+                primaryStyle: 'Estilo principal',
+                secondaryStyle: 'Estilo secundario',
+                restartBtn: '🔄 Realizar Nuevo Cuestionario',
+                alertIncomplete: 'Por favor, responde todas las preguntas antes de ver los resultados.',
+            },
+            en: {
+                pageTitle: 'Thomas Kilmann Negotiation Styles Questionnaire - Be-Skiller',
+                welcomeTitle: 'Thomas Kilmann Negotiation Styles Questionnaire',
+                welcomeSubtitle: 'Discover your predominant style by answering 30 questions about how you handle conflict situations.',
+                howTitle: 'How does it work?',
+                howItems: ['Read each pair of statements', 'Choose the option that best describes you', 'You can navigate between questions freely', 'At the end you will know your negotiation styles profile'],
+                disclaimerTitle: 'Before you begin',
+                disclaimerItems: ['This tool is for training purposes only.', 'No personal data is collected or stored.', 'Results are indicative and do not constitute a professional assessment.'],
+                disclaimerAccept: 'By clicking "Start" you accept these conditions.',
+                kilmannNote: 'Based on the model by <strong>Thomas Kilmann</strong>, a world-leading authority on negotiation styles and conflict management.',
+                startBtn: 'Start Questionnaire',
+                questionOf: (n) => `Question ${n} of 30`,
+                answered: (n) => `Answered: ${n}/30`,
+                questionPrompt: 'Choose the option that best describes you:',
+                prevBtn: '← Previous',
+                nextBtn: 'Next →',
+                finishBtn: 'See Results',
+                quickNavTitle: 'Quick navigation:',
+                resultsTitle: 'Questionnaire Results',
+                resultsSubtitle: 'Your negotiation styles profile',
+                topStylesTitle: 'Your Predominant Styles',
+                primaryStyle: 'Primary style',
+                secondaryStyle: 'Secondary style',
+                restartBtn: '🔄 Take Questionnaire Again',
+                alertIncomplete: 'Please answer all questions before viewing the results.',
+            }
+        };
+
+        // ── Preguntas ──────────────────────────────────────────────────
+        const questionsES = [
+            { a: "Hay ocasiones en que dejo a otro la responsabilidad de resolver un problema.", b: "Antes de negociar las cosas con las que estamos en desacuerdo, trato de subrayar aquello en lo que coincidimos." },
+            { a: "Trato de encontrar una solución de compromiso.", b: "Trato de discutir todos y cada uno de los asuntos que nos preocupan a cada una de las partes." },
+            { a: "Generalmente me muestro firme en conseguir mis metas.", b: "Intento suavizar los sentimientos del otro y preservar la relación." },
+            { a: "Trato de encontrar una solución de compromiso.", b: "A veces sacrifico mis propios deseos a los del otro." },
+            { a: "Busco insistentemente la ayuda del otro para alcanzar la solución.", b: "Intento hacer lo necesario para evitar tensiones." },
+            { a: "Procuro no crear situaciones que me resulten desagradables.", b: "Trato de que gane mi postura." },
+            { a: "Trato de posponer el tema hasta haber tenido tiempo para reflexionar sobre él.", b: "Cedo en algunos puntos a cambio de otros." },
+            { a: "Generalmente me muestro firme en obtener mis metas.", b: "Trato de plantear desde el principio todos los intereses en juego y todas las soluciones posibles." },
+            { a: "Tengo la impresión de que no siempre merece la pena preocuparse por las diferencias.", b: "Hago algunos esfuerzos por seguir mi camino." },
+            { a: "Me muestro firme en alcanzar mis metas.", b: "Trato de encontrar una solución de compromiso." },
+            { a: "Intento plantear desde el principio todos los intereses en juego y todas las soluciones posibles.", b: "Intento suavizar los sentimientos del otro y preservar nuestra relación." },
+            { a: "A veces evito tomar posturas que puedan crear controversia.", b: "Permito al otro obtener algunas de sus posiciones si él me permite algunas de la mías." },
+            { a: "Propongo una solución intermedia.", b: "Presiono para que se consigan mis planteamientos." },
+            { a: "Digo al otro mis ideas y le pregunto las suyas.", b: "Trato de mostrar la lógica y los beneficios de mi postura." },
+            { a: "Intento suavizar los sentimientos del otro y preservar nuestra relación.", b: "Hago lo necesario para evitar tensiones." },
+            { a: "Trato de no herir los sentimientos de los demás.", b: "Trato de convencer al otro de las ventajas de mi postura." },
+            { a: "Generalmente me muestro firme en lograr mis objetivos.", b: "Hago lo posible por evitar tensiones inútiles." },
+            { a: "Si eso hace feliz al otro, puedo dejarle que mantenga su punto de vista.", b: "Permito al otro obtener alguno de sus planteamientos si él me concede alguno de los míos." },
+            { a: "Intento plantear desde el principio todos los intereses en juego y soluciones posibles.", b: "Trato de posponer el tema hasta haber tenido tiempo para reflexionar sobre él." },
+            { a: "En primer lugar intento discutir nuestras diferencias.", b: "Presiono para que se consigan mis planteamientos." },
+            { a: "En lo referente a las negociaciones, trato de ser considerado con los deseos de la otra persona.", b: "Siempre me inclino hacia la discusión directa del problema." },
+            { a: "Trato de encontrar una solución al problema entre la del otro y la mía.", b: "Defiendo mis planteamientos." },
+            { a: "A menudo me preocupo por satisfacer los deseos de las dos partes.", b: "En ocasiones dejo a otros la responsabilidad de resolver el problema." },
+            { a: "Si la postura del otro me parece importante para él, intento coincidir con sus planteamientos.", b: "Presiono para que se consigan mis planteamientos." },
+            { a: "Trato de demostrar al otro la lógica y los beneficios de mi postura.", b: "En las negociaciones, trato de ser considerado con los planteamientos del otro." },
+            { a: "Propongo una solución intermedia.", b: "Casi siempre me interesa satisfacer todos los deseos de las dos partes." },
+            { a: "A veces evito tomar posiciones que podrían crear controversia.", b: "Si eso hace feliz al otro, puedo dejarle que mantenga su punto de vista." },
+            { a: "Generalmente me muestro firme en alcanzar mis objetivos.", b: "Generalmente busco la ayuda del otro para encontrar una solución." },
+            { a: "Propongo una solución intermedia.", b: "Creo que siempre merece la pena preocuparse por las diferencias." },
+            { a: "Trato de no herir los sentimientos del otro.", b: "Siempre afronto el problema junto con la otra parte, para que podamos trabajar sobre él." }
+        ];
+
+        const questionsEN = [
+            { a: "Sometimes I leave it to others to solve a problem.", b: "Before negotiating points of disagreement, I try to emphasize what we agree on." },
+            { a: "I try to find a compromise solution.", b: "I try to discuss each and every concern of both parties." },
+            { a: "I usually stand firm on achieving my goals.", b: "I try to soften the other person's feelings and preserve the relationship." },
+            { a: "I try to find a compromise solution.", b: "Sometimes I sacrifice my own wishes for those of the other person." },
+            { a: "I insistently seek the other person's help in reaching a solution.", b: "I try to do what is necessary to avoid tensions." },
+            { a: "I try not to create unpleasant situations for myself.", b: "I try to win my position." },
+            { a: "I try to postpone the issue until I have had time to reflect on it.", b: "I give up on some points in exchange for others." },
+            { a: "I usually stand firm in achieving my goals.", b: "I try to present all the interests at stake and all possible solutions from the beginning." },
+            { a: "I feel that it is not always worth worrying about differences.", b: "I make some efforts to pursue my path." },
+            { a: "I am firm in achieving my goals.", b: "I try to find a compromise solution." },
+            { a: "I try to present all interests at stake and all possible solutions from the beginning.", b: "I try to soften the other person's feelings and preserve our relationship." },
+            { a: "Sometimes I avoid taking positions that may create controversy.", b: "I allow the other person to obtain some of their positions if they allow me some of mine." },
+            { a: "I propose an intermediate solution.", b: "I push for my ideas to be implemented." },
+            { a: "I share my ideas with the other person and ask for theirs.", b: "I try to show the logic and benefits of my position." },
+            { a: "I try to soften the other person's feelings and preserve our relationship.", b: "I do what is necessary to avoid tensions." },
+            { a: "I try not to hurt others' feelings.", b: "I try to convince the other person of the advantages of my position." },
+            { a: "I usually stand firm in achieving my goals.", b: "I do what I can to avoid unnecessary tensions." },
+            { a: "If it makes the other person happy, I may let them maintain their point of view.", b: "I allow the other person to obtain some of their ideas if they give me some of mine." },
+            { a: "I try to present all interests and possible solutions from the start.", b: "I try to postpone the issue until I have had time to reflect on it." },
+            { a: "I try to discuss our differences first.", b: "I push for my ideas to be implemented." },
+            { a: "In negotiations, I try to be considerate of the other person's wishes.", b: "I always lean toward directly discussing the problem." },
+            { a: "I try to find a solution between mine and the other person's.", b: "I defend my ideas." },
+            { a: "I often care about satisfying both parties' wishes.", b: "Sometimes I leave it to others to solve the problem." },
+            { a: "If the other person's position seems important to them, I try to align with their ideas.", b: "I push for my ideas to be implemented." },
+            { a: "I try to show the logic and benefits of my position.", b: "In negotiations, I try to be considerate of the other person's ideas." },
+            { a: "I propose an intermediate solution.", b: "I am almost always interested in satisfying the wishes of both parties." },
+            { a: "Sometimes I avoid taking positions that could create controversy.", b: "If it makes the other person happy, I may let them maintain their point of view." },
+            { a: "I usually stand firm in achieving my goals.", b: "I usually seek the other person's help to find a solution." },
+            { a: "I propose an intermediate solution.", b: "I believe it is always worth worrying about the differences." },
+            { a: "I try not to hurt the other person's feelings.", b: "I always face the problem together with the other person so we can work on it." }
+        ];
+
+        // ── Matriz de puntuación (igual para ambos idiomas) ────────────
+        const scoreMatrixA = [
+            [0,0,0,1,0], [0,0,1,0,0], [1,0,0,0,0], [0,0,1,0,0], [0,1,0,0,0],
+            [0,0,0,1,0], [0,0,0,1,0], [1,0,0,0,0], [0,0,0,1,0], [1,0,0,0,0],
+            [0,1,0,0,0], [0,0,0,1,0], [0,0,1,0,0], [0,1,0,0,0], [0,0,0,0,1],
+            [0,0,0,0,1], [1,0,0,0,0], [0,0,0,0,1], [0,1,0,0,0], [0,1,0,0,0],
+            [0,0,0,0,1], [0,0,1,0,0], [0,1,0,0,0], [0,0,0,0,1], [1,0,0,0,0],
+            [0,0,1,0,0], [0,0,0,1,0], [1,0,0,0,0], [0,0,1,0,0], [0,0,0,0,1]
+        ];
+
+        const scoreMatrixB = [
+            [0,0,0,0,1], [0,1,0,0,0], [0,0,0,0,1], [0,0,0,0,1], [0,0,0,1,0],
+            [1,0,0,0,0], [0,0,1,0,0], [0,1,0,0,0], [1,0,0,0,0], [0,0,1,0,0],
+            [0,0,0,0,1], [0,0,1,0,0], [1,0,0,0,0], [1,0,0,0,0], [0,0,0,1,0],
+            [1,0,0,0,0], [0,0,0,1,0], [0,0,1,0,0], [0,0,0,1,0], [0,0,1,0,0],
+            [0,1,0,0,0], [1,0,0,0,0], [0,0,0,1,0], [0,0,1,0,0], [0,0,0,0,1],
+            [0,1,0,0,0], [0,0,0,0,1], [0,1,0,0,0], [0,0,0,1,0], [0,1,0,0,0]
+        ];
+
+        // ── Estilos con traducciones ───────────────────────────────────
+        const stylesData = {
+            e1: {
+                es: { name: 'Competición', desc: 'Tiendes a priorizar tus intereses e imponer tu postura. Quieres Ganar.' },
+                en: { name: 'Competition', desc: 'You tend to prioritize your interests and impose your position. You want to Win.' },
+                color: '#FF8C42', textColor: '#fff'
+            },
+            e2: {
+                es: { name: 'Asociación', desc: 'Buscas soluciones beneficiosas para ambos. Win-Win.' },
+                en: { name: 'Association', desc: 'You seek mutually beneficial solutions. Win-Win.' },
+                color: '#FFB380', textColor: '#1a1a1a'
+            },
+            e3: {
+                es: { name: 'Compromiso', desc: 'Buscas un punto medio. Equilibrio entre buscar la mejor solución sin una gran inversión.' },
+                en: { name: 'Commitment', desc: 'You seek a middle ground. Balance between finding the best solution without a large investment.' },
+                color: '#FF6B1A', textColor: '#fff'
+            },
+            e4: {
+                es: { name: 'Evitación', desc: 'Tiendes a evitar el conflicto.' },
+                en: { name: 'Avoidance', desc: 'You tend to avoid conflict.' },
+                color: '#D6D6D6', textColor: '#1a1a1a'
+            },
+            e5: {
+                es: { name: 'Acomodación', desc: 'Priorizas el interés del otro respecto al tuyo. Cedes por una armonía colectiva.' },
+                en: { name: 'Accommodation', desc: 'You prioritize the other person\'s interest over yours. You yield for collective harmony.' },
+                color: '#FFDBBB', textColor: '#1a1a1a'
+            }
+        };
+
+        let currentQuestion = 0;
+        let answers = {};
+
+        // ── Selección de idioma ────────────────────────────────────────
+        function selectLanguage(lang) {
+            currentLang = lang;
+            document.getElementById('langModal').classList.add('hidden');
+            document.getElementById('welcomeScreen').classList.add('active');
+            applyLanguage();
+        }
+
+        function applyLanguage() {
+            const t = ui[currentLang];
+            document.title = t.pageTitle;
+            document.getElementById('welcomeTitle').textContent = t.welcomeTitle;
+            document.getElementById('welcomeSubtitle').textContent = t.welcomeSubtitle;
+            document.getElementById('howTitle').textContent = t.howTitle;
+            const howList = document.getElementById('howList');
+            howList.innerHTML = t.howItems.map(item => `<li>• ${item}</li>`).join('');
+            document.getElementById('disclaimerTitle').textContent = t.disclaimerTitle;
+            const discList = document.getElementById('disclaimerList');
+            discList.innerHTML = t.disclaimerItems.map(item => `<li><span class="disc-icon">✦</span> ${item}</li>`).join('');
+            document.getElementById('disclaimerAccept').textContent = t.disclaimerAccept;
+            document.getElementById('kilmannNote').innerHTML = t.kilmannNote;
+            document.getElementById('startBtn').textContent = t.startBtn;
+            document.getElementById('quickNavTitle').textContent = t.quickNavTitle;
+            document.getElementById('resultsTitle').textContent = t.resultsTitle;
+            document.getElementById('resultsSubtitle').textContent = t.resultsSubtitle;
+            document.getElementById('topStylesTitle').textContent = t.topStylesTitle;
+            document.getElementById('restartBtn').textContent = t.restartBtn;
+            document.getElementById('prevBtn').textContent = t.prevBtn;
+            document.getElementById('nextBtn').textContent = t.nextBtn;
+            document.getElementById('finishBtn').textContent = t.finishBtn;
+        }
+
+        function getQuestions() {
+            return currentLang === 'en' ? questionsEN : questionsES;
+        }
+
+        function startQuiz() {
+            document.getElementById('welcomeScreen').classList.remove('active');
+            document.getElementById('quizScreen').classList.add('active');
+            renderQuestion();
+            renderQuickNav();
+            document.getElementById('quizScreen').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function renderQuestion() {
+            const q = getQuestions()[currentQuestion];
+            const t = ui[currentLang];
+            const container = document.getElementById('optionsContainer');
+
+            container.innerHTML = `
+                <div class="option ${answers[currentQuestion] === 'A' ? 'selected' : ''}" onclick="selectAnswer('A')">
+                    <div class="option-letter">A</div>
+                    <div class="option-text">${q.a}</div>
+                </div>
+                <div class="option ${answers[currentQuestion] === 'B' ? 'selected' : ''}" onclick="selectAnswer('B')">
+                    <div class="option-letter">B</div>
+                    <div class="option-text">${q.b}</div>
+                </div>
+            `;
+
+            document.getElementById('questionPrompt').textContent = t.questionPrompt;
+            document.getElementById('currentNum').textContent = t.questionOf(currentQuestion + 1);
+            document.getElementById('answeredCount').textContent = t.answered(Object.keys(answers).length);
+            document.getElementById('progressFill').style.width = ((currentQuestion + 1) / 30 * 100) + '%';
+
+            document.getElementById('prevBtn').disabled = currentQuestion === 0;
+            document.getElementById('nextBtn').disabled = currentQuestion === 29;
+
+            if (currentQuestion === 29 && Object.keys(answers).length === 30) {
+                document.getElementById('finishBtn').style.display = 'flex';
+            } else {
+                document.getElementById('finishBtn').style.display = 'none';
+            }
+
+            renderQuickNav();
+        }
+
+        function selectAnswer(answer) {
+            answers[currentQuestion] = answer;
+            if (currentQuestion < 29) {
+                currentQuestion++;
+            }
+            renderQuestion();
+            document.querySelector('.question-card').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                renderQuestion();
+                document.querySelector('.question-card').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < 29) {
+                currentQuestion++;
+                renderQuestion();
+                document.querySelector('.question-card').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function goToQuestion(index) {
+            currentQuestion = index;
+            renderQuestion();
+            document.querySelector('.question-card').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function renderQuickNav() {
+            const grid = document.getElementById('quickNavGrid');
+            grid.innerHTML = '';
+            for (let i = 0; i < 30; i++) {
+                const btn = document.createElement('button');
+                btn.className = 'quick-nav-btn';
+                btn.textContent = i + 1;
+                btn.onclick = () => goToQuestion(i);
+                if (i === currentQuestion) btn.classList.add('current');
+                else if (answers[i]) btn.classList.add('answered');
+                grid.appendChild(btn);
+            }
+        }
+
+        function calculateResults() {
+            const scores = [0, 0, 0, 0, 0];
+            for (let i = 0; i < 30; i++) {
+                const answer = answers[i];
+                const matrix = answer === 'A' ? scoreMatrixA : scoreMatrixB;
+                for (let j = 0; j < 5; j++) scores[j] += matrix[i][j];
+            }
+            return scores;
+        }
+
+        function showResults() {
+            const t = ui[currentLang];
+            if (Object.keys(answers).length !== 30) {
+                alert(t.alertIncomplete);
+                return;
+            }
+
+            document.getElementById('quizScreen').classList.remove('active');
+            document.getElementById('resultsScreen').classList.add('active');
+            document.getElementById('resultsScreen').scrollIntoView({ behavior: 'smooth' }); renderMatrix();
+
+            const scores = calculateResults();
+            const total = scores.reduce((a, b) => a + b, 0);
+            const percentages = scores.map(s => ((s / total) * 100).toFixed(1));
+            const sorted = scores.map((score, index) => ({ score, index })).sort((a, b) => b.score - a.score);
+
+            const topStylesGrid = document.getElementById('topStylesGrid');
+            topStylesGrid.innerHTML = sorted.slice(0, 2).map((item, idx) => {
+                const styleKey = `e${item.index + 1}`;
+                const s = stylesData[styleKey];
+                const langData = s[currentLang];
+                const rankLabel = idx === 0 ? t.primaryStyle : t.secondaryStyle;
+                return `
+                    <div class="top-style-card" style="background-color: ${s.color}; border-color: ${idx === 0 ? '#FF6B1A' : '#FFB380'}; color: ${s.textColor};">
+                        <div class="top-style-rank">${rankLabel}</div>
+                        <div class="top-style-name">${langData.name}</div>
+                        <div class="top-style-score-block">
+                            <div class="top-style-score">${item.score}</div>
+                            <div class="top-style-percent">${percentages[item.index]}%</div>
+                        </div>
+                        <div class="top-style-desc">${langData.desc}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderMatrix(){
+            var sc = calculateResults();
+            var grid = document.getElementById('matrixGrid');
+            if(!grid) return;
+            var cellSel = ['.mc-competicion','.mc-asociacion','.matrix-compromiso','.mc-evitacion','.mc-acomodacion'];
+            grid.classList.remove('scored');
+            var i, el, pts;
+            for(i=0;i<cellSel.length;i++){ el=grid.querySelector(cellSel[i]); if(el){ el.classList.remove('mc-on'); pts=el.querySelector('.mc-pts'); if(pts) pts.textContent=''; } }
+            var maxI=0; for(i=1;i<5;i++){ if(sc[i]>sc[maxI]) maxI=i; }
+            for(i=0;i<cellSel.length;i++){ el=grid.querySelector(cellSel[i]); if(!el) continue; pts=el.querySelector('.mc-pts'); if(pts) pts.textContent=sc[i]+' / 12'; if(i===maxI) el.classList.add('mc-on'); }
+            grid.classList.add('scored');
+            var xRaw = sc[0] + sc[1] + 0.5*sc[2];
+            var yRaw = sc[4] + sc[1] + 0.5*sc[2];
+            var xPct = Math.max(8, Math.min(92, xRaw/30*100));
+            var yPct = Math.max(8, Math.min(92, yRaw/30*100));
+            var you = document.getElementById('matrixYou');
+            if(you){ you.style.left=xPct+'%'; you.style.top=(100-yPct)+'%'; you.style.display='flex'; }
+        }
+
+        function restart() {
+            currentQuestion = 0;
+            answers = {};
+            document.getElementById('resultsScreen').classList.remove('active');
+            document.getElementById('langModal').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
